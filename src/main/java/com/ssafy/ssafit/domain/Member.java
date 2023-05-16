@@ -12,10 +12,10 @@ import lombok.Data;
 
 @Entity
 @Data
-public class User {
+public class Member {
 	
 	@Id
-	private String userId;
+	private String memberId;
 	
 	private String password;
 	
@@ -27,13 +27,12 @@ public class User {
 	
 	private String title;
 	
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 	private List<Bookmark> bookmarks = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 	private List<Board> boards = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 	private List<Like> likes = new ArrayList<>();
-	
 }

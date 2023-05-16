@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
+import lombok.Getter;
 
 @Entity
 @Data
@@ -26,8 +27,8 @@ public class Board {
 	private Long boardNo;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id")
-	private User user;
+	@JoinColumn(name = "member_id")
+	private Member member;
 	
 	@OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
 	private List<Like> likes = new ArrayList<>();
