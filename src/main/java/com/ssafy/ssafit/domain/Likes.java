@@ -12,15 +12,15 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Bookmark {
+public class Likes {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long bookmarkNo;
-		
+	private Long likeNo;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "video_no")
-	private Video video;
+	@JoinColumn(name = "board_no")
+	private Board board;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "member_id")
