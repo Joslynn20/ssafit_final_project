@@ -16,12 +16,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class Board {
 	
 	@Id
@@ -33,7 +38,7 @@ public class Board {
 	private Member member;
 	
 	@OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
-	private List<Like> likes = new ArrayList<>();
+	private List<Likes> likes = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
 	private List<File> files = new ArrayList<>();
@@ -51,9 +56,9 @@ public class Board {
 	@Enumerated(EnumType.STRING)
 	private BoardType type;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	@CreationTimestamp
 	private LocalDateTime regDate;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@UpdateTimestamp
 	private LocalDateTime modDate;	
 }
